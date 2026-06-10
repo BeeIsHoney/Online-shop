@@ -9,6 +9,7 @@ public class LoginAndRegister {
 
 	UserDb userdb = new UserDb();
 	Scanner sc = new Scanner(System.in);
+	int userid;
 
 	public void Register() {
 		boolean isExit = true;
@@ -42,13 +43,19 @@ public class LoginAndRegister {
 				System.out.println("name can not be blank or null");
 			}
 
-			for (User u : userdb.getUser()) {
+			for (User u : UserDb.getUser()) {
 				System.out.println("ID:" +u.getUserId()+"\tUsername: " + u.getUsername() + "\tpassword: " + u.getPassword() + "\t email: "
 						+ u.getEmail() + "\tbalance: " + u.getBalance() + "\tdate: " + u.getDate() + "\t role: "
 						+ u.getRole());
+				userid = u.getUserId();
+//				System.out.println("userid" + userid);
 			}
 		}
-
+		
+	}
+	
+	public int getUserId() {
+		return userid;
 	}
 
 	public void Login() {

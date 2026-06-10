@@ -13,6 +13,10 @@
 		private LocalDate date = LocalDate.now();
 		private static int count = 1;
 		
+		public User() {
+			
+		}
+		
 		
 		public User(String username,String password,String email) {
 			this.UserId = count++;

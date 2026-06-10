@@ -7,13 +7,13 @@ import online_shop.com.jdc.work.customer.User;
 
 public class UserDb {
 	
-	List<User> userdb = new ArrayList<>();
+  private static List<User> userdb = new ArrayList<>();
 	
 	public void addUser(User user) {
 		userdb.add(user);
 	}
 	
-	public List<User> getUser() {
+	public static List<User> getUser() {
 		return userdb;
 	}
 }
