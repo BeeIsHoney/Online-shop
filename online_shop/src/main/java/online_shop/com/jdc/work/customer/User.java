@@ -10,6 +10,7 @@ public class User {
 	private String email;
 	private LocalDate date = LocalDate.now();
 	
+	
 	public User(String username,String password,double balance,String email) {
 		this.username = username;
 		this.password = password;
