@@ -74,6 +74,7 @@ public class Main {
 		 
 		 System.out.println("1.View Account Info\n2.View Product\n3.View Cart \n4.checkout \n5.Purchased History\n6.Exit\nChoose: ");
 		 int choose = sc.nextInt();
+		 
 	 }
 
 }
