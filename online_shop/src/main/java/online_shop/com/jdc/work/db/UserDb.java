@@ -9,7 +9,7 @@ public class UserDb {
 	
   private static List<User> userdb = new ArrayList<>();
 	
-	public void addUser(User user) {
+	public static void addUser(User user) {
 		userdb.add(user);
 	}
 	

@@ -7,7 +7,7 @@
 		private int UserId;
 		private String username;
 		private String password;
-		private double balance = 0;
+		private int balance = 0;
 		private String email;
 		private Role role = Role.USER;
 		private LocalDate date = LocalDate.now();
@@ -33,11 +33,10 @@
 			this.role = role;
 		}
 	
-		public User(String username,String password,double balance,String email,Role role) {
+		public User(String username,String password,String email,Role role) {
 			this.UserId = count++;
 			this.username = username;
 			this.password = password;
-			this.balance = balance;
 			this.email = email;
 			this.role = role;
 		}
@@ -57,10 +56,10 @@
 		public void setPassword(String password) {
 			this.password = password;
 		}
-		public double getBalance() {
+		public int getBalance() {
 			return balance;
 		}
-		public void setBalance(double balance) {
+		public void setBalance(int balance) {
 			this.balance = balance;
 		}
 		public String getEmail() {

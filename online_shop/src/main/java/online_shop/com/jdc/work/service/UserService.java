@@ -17,13 +17,14 @@ public class UserService {
 				
 				System.out.printf("%-15s : %s%n", "Status", u.getRole());
 				System.out.printf("%-15s : %s%n", "Username", u.getUsername());
-				System.out.printf("%-15s : %.2f%n", "Balance", u.getBalance());
+				System.out.printf("%-15s : %2d%n", "Balance", u.getBalance());
 				System.out.printf("%-15s : %s%n", "Email", u.getEmail());
+				System.out.printf("%-15s : %s%n", "Date", u.getDate());
 				System.out.println("");
 			}
 		}
-		
-		
 	}
+	
+	
 
 }
