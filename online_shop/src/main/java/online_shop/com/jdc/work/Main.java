@@ -16,7 +16,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		Main m = new Main();
+//		m.HomeMenu();
+//		lg.Register();
 		m.mainMenu();		
+		
 	}
 
 	/*
@@ -33,12 +36,12 @@ public class Main {
 		try {
 				System.out.println(" ==================== Main Menu ====================");
 				System.out.print("1.Login \n2.Register \n3.Exit\nChoose:");
-				int id = lg.getUserId();
 				
 				 choose = sc.nextInt();
 
 				switch (choose) {
 				case 1:
+					lg.Login();
 					break;
 				case 2:
 					  lg.Register();
@@ -68,13 +71,26 @@ public class Main {
 	 * ===========================================================
 	 */
 	
-	 void HomeMenu() {
+	public void HomeMenu() {
 		 
-		 System.out.println(" ==================== Home Menu ====================");
-		 
-		 System.out.println("1.View Account Info\n2.View Product\n3.View Cart \n4.checkout \n5.Purchased History\n6.Exit\nChoose: ");
+		 boolean isExit = true;
+		 while(isExit) {
+		 System.out.println("==================== Home Menu ====================");
+		 System.out.print("\n1.View Account Info\n2.View Product\n3.View Cart \n4.checkout \n5.Purchased History\n6.Exit\nChoose: ");
 		 int choose = sc.nextInt();
+		 int id = lg.getUserId();
+		 switch(choose) {
+		 case 1:
+			 usersvc.viewUserById(id);
+			 break;
+		 case 6:
+			 isExit = false;
+			 break;
+		 default:
+			 
+		 }
 		 
 	 }
+	}
 
 }

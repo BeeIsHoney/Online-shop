@@ -2,6 +2,7 @@ package online_shop.com.jdc.work.authentaction;
 
 import java.util.Scanner;
 
+import online_shop.com.jdc.work.Main;
 import online_shop.com.jdc.work.customer.User;
 import online_shop.com.jdc.work.db.UserDb;
 
@@ -10,6 +11,7 @@ public class LoginAndRegister {
 	UserDb userdb = new UserDb();
 	Scanner sc = new Scanner(System.in);
 	int userid;
+	Main m = new Main();
 
 	public void Register() {
 		boolean isExit = true;
@@ -27,9 +29,11 @@ public class LoginAndRegister {
 					String email = sc.next();
 					if (email.contains("@email.com")) {
 						isExit = false;
-						System.out.println("All good");
 						User user = new User(name, password, email);
 						userdb.addUser(user);
+						///Test
+//						m.HomeMenu();
+						
 						
 					} else {
 						System.out.println("Please Fill Correct Email Format.");
@@ -43,13 +47,7 @@ public class LoginAndRegister {
 				System.out.println("name can not be blank or null");
 			}
 
-			for (User u : UserDb.getUser()) {
-				System.out.println("ID:" +u.getUserId()+"\tUsername: " + u.getUsername() + "\tpassword: " + u.getPassword() + "\t email: "
-						+ u.getEmail() + "\tbalance: " + u.getBalance() + "\tdate: " + u.getDate() + "\t role: "
-						+ u.getRole());
-				userid = u.getUserId();
-//				System.out.println("userid" + userid);
-			}
+		
 		}
 		
 	}
@@ -59,6 +57,29 @@ public class LoginAndRegister {
 	}
 
 	public void Login() {
+		
+		System.out.println("========== Login ==========");
+		System.out.print("Enter Email: ");
+		String name = sc.next();
+		System.out.print("Enter Password: ");
+		String pw = sc.next();
+		boolean found = false;
+		
+		for(User u : UserDb.getUser()) {
+//			System.out.println(u.getEmail()  +""+u.getPassword());
+			if(u.getEmail().equals(name) && u.getPassword().equals(pw)) {
+				found = true;
+				userid = u.getUserId();
+				System.out.println("\nLogin Success\n");
+				m.HomeMenu();
+				break;
+			}
+		}
+		
+		if(!found) {
+			System.out.println("Wrong Password Or Email");
+		}
+		
 
 	}
 

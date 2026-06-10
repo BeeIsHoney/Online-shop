@@ -13,7 +13,13 @@ public class UserService {
 	
 		for(User u :UserDb.getUser() ) {
 			if(id == u.getUserId()) {
-				System.out.println(u.getUsername());
+				System.out.println("==================== Account Info ==================== \n");
+				
+				System.out.printf("%-15s : %s%n", "Status", u.getRole());
+				System.out.printf("%-15s : %s%n", "Username", u.getUsername());
+				System.out.printf("%-15s : %.2f%n", "Balance", u.getBalance());
+				System.out.printf("%-15s : %s%n", "Email", u.getEmail());
+				System.out.println("");
 			}
 		}
 		
