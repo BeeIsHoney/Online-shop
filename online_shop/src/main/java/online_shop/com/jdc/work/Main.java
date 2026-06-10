@@ -135,11 +135,14 @@ public class Main {
 					case 2:
 						admin.addUserBalance();
 						break;
+					case 3:
+						admin.removeUser();
+						break;
 					case 7:
 						isExit = false;
 						break;
 					}
-				} else {
+				} else if(choose != 0 ){
 					throw new Exception();
 				}
 
