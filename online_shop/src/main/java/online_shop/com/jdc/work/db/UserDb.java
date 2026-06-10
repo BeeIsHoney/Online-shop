@@ -1,31 +1,24 @@
 package online_shop.com.jdc.work.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import online_shop.com.jdc.work.customer.User;
 
 public class UserDb {
 	
-	private User[] userarr;
-	
-	{
-		userarr = new User[0];
-	}
+	List<User> userdb = new ArrayList<>();
 	
 	public void addUser(User user) {
-		
-		User[] temp = new User[userarr.length + 1];
-		
-		for(int i =0;i<userarr.length;i++) {
-			temp[i] = userarr[i];
-		}
-		
-		temp[userarr.length] = user;
-		
-		userarr = temp;
+		userdb.add(user);
 	}
 	
-	public User[] getUser() {
-		return userarr;
+	public List<User> getUser() {
+		return userdb;
 	}
+	
+	
+	
 	
 
 }
