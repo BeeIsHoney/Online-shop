@@ -3,6 +3,7 @@ package online_shop.com.jdc.work.authentaction;
 import java.util.Scanner;
 
 import online_shop.com.jdc.work.Main;
+import online_shop.com.jdc.work.customer.Role;
 import online_shop.com.jdc.work.customer.User;
 import online_shop.com.jdc.work.db.UserDb;
 
@@ -13,7 +14,9 @@ public class LoginAndRegister {
 	int userid;
 	Main m = new Main();
 
+
 	public void Register() {
+
 		boolean isExit = true;
 		while (isExit) {
 			System.out.println("========== Register ==========");
@@ -46,8 +49,6 @@ public class LoginAndRegister {
 			} else {
 				System.out.println("name can not be blank or null");
 			}
-
-		
 		}
 		
 	}
@@ -70,12 +71,18 @@ public class LoginAndRegister {
 			if(u.getEmail().equals(name) && u.getPassword().equals(pw)) {
 				found = true;
 				userid = u.getUserId();
-				System.out.println("\nLogin Success\n");
-				m.HomeMenu();
+
+				if(u.getRole() == Role.USER) {
+					System.out.println("\nLogin Success\n");
+					m.UserMenu();
+				}else if(u.getRole() == Role.ADMIN){
+					System.out.println("\nLogin Success\n");
+					m.adminMenu();
+				}
+				
 				break;
 			}
 		}
-		
 		if(!found) {
 			System.out.println("Wrong Password Or Email");
 		}
