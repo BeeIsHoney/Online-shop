@@ -12,7 +12,7 @@ public class Main {
 		Main m = new Main();
 
 		m.mainMenu();
-
+		
 	}
 
 	void mainMenu() {
