@@ -16,9 +16,4 @@ public class UserDb {
 	public List<User> getUser() {
 		return userdb;
 	}
-	
-	
-	
-	
-
 }
