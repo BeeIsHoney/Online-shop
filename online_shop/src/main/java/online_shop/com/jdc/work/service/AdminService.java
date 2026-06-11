@@ -2,6 +2,7 @@ package online_shop.com.jdc.work.service;
 
 import java.util.Scanner;
 
+import online_shop.com.jdc.work.customer.Role;
 import online_shop.com.jdc.work.customer.User;
 import online_shop.com.jdc.work.db.UserDb;
 
@@ -61,6 +62,31 @@ public class AdminService {
 			System.out.println("Please Enter Number");
 		}
 		
+	}
+	
+	public void removeUser() {
+		System.out.println("==================== Remove User ====================\n");
+	    System.out.print("Enter Id: ");
+	    boolean found = false;
+		int id = sc.nextInt();
+		for(User u : UserDb.getUser()) {
+			
+			if(u.getUserId() == id) {
+				if(u.getRole() == Role.ADMIN) {
+					System.out.println("Can not delete Admin\n");
+				}else if(u.getRole() == Role.USER){
+					found = true;
+					System.out.println("User Delete\n");
+					UserDb.getUser().remove(u);
+				}
+				break;
+			
+			}
+		
+		}
+		if(!found) {
+			System.out.println("User not found");
+		}
 	}
 
 
