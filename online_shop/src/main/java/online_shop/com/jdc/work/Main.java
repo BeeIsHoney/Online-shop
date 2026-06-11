@@ -6,8 +6,11 @@ import java.util.Scanner;
 import online_shop.com.jdc.work.authentaction.LoginAndRegister;
 import online_shop.com.jdc.work.customer.Role;
 import online_shop.com.jdc.work.customer.User;
+import online_shop.com.jdc.work.db.ProductDb;
 import online_shop.com.jdc.work.db.UserDb;
+import online_shop.com.jdc.work.product.Product;
 import online_shop.com.jdc.work.service.AdminService;
+import online_shop.com.jdc.work.service.ProductService;
 import online_shop.com.jdc.work.service.UserService;
 
 public class Main {
@@ -16,6 +19,7 @@ public class Main {
 	static LoginAndRegister lg = new LoginAndRegister();
 	UserService usersvc = new UserService();
 	static AdminService admin = new AdminService();
+	ProductService pds = new ProductService();
 	{
 		if (UserDb.getUser().size() == 0) {
 			User admin = new User("admin", "admin123", "admin@email.com", Role.ADMIN);
@@ -23,9 +27,8 @@ public class Main {
 			UserDb.addUser(admin);
 			UserDb.addUser(testuser);
 		}
-
 	}
-
+	
 	public static void main(String[] args) {
 
 		Main m = new Main();
@@ -33,8 +36,8 @@ public class Main {
 //		m.HomeMenu();
 //		lg.Register();
 
-		m.mainMenu();		
-
+		m.mainMenu();	
+		Product();
 	}
 
 	/*
@@ -99,6 +102,9 @@ public class Main {
 			case 1:
 				usersvc.viewUserById(id);
 				break;
+			case 2:
+				pds.viewProduct(id);
+				break;
 			case 6:
 				isExit = false;
 				break;
@@ -148,6 +154,17 @@ public class Main {
 				sc.nextLine();
 			}
 		}
+	}
+	
+	static void Product() {
+		
+		ProductDb.addProduct(new Product(1, "Laptop", 1200.0, "Gaming Laptop", 10,
+	                        "Electronics", "Dell"));
+		ProductDb.addProduct(new Product(2, "Phone", 800.0, "Smart Phone", 20,
+	                        "Electronics", "Samsung"));
+		ProductService service = new ProductService();
+
+	    service.viewProduct(1);
 	}
 
 }
