@@ -33,7 +33,7 @@ public class LoginAndRegister {
 					if (email.contains("@email.com")) {
 						isExit = false;
 						User user = new User(name, password, email);
-						userdb.addUser(user);
+						UserDb.addUser(user);
 						///Test
 //						m.HomeMenu();
 						
@@ -75,6 +75,7 @@ public class LoginAndRegister {
 				if(u.getRole() == Role.USER) {
 					System.out.println("\nLogin Success\n");
 					m.UserMenu();
+					
 				}else if(u.getRole() == Role.ADMIN){
 					System.out.println("\nLogin Success\n");
 					m.adminMenu();
