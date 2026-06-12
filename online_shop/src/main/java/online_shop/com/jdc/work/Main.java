@@ -36,7 +36,7 @@ public class Main {
 //		m.HomeMenu();
 //		lg.Register();
 
-		m.mainMenu();	
+//		m.mainMenu();	
 		Product();
 	}
 
@@ -102,9 +102,6 @@ public class Main {
 			case 1:
 				usersvc.viewUserById(id);
 				break;
-			case 2:
-				pds.viewProduct(id);
-				break;
 			case 6:
 				isExit = false;
 				break;
@@ -156,6 +153,33 @@ public class Main {
 				System.out.println("Please Enter Correct Number");
 				sc.nextLine();
 			}
+		}
+	}
+	/*
+	 * ===========================================================
+	 * ======================= View Product =======================
+	 * ===========================================================
+	 */
+	public void viewProduct() {
+		boolean isExit = true;
+		int choose;
+		while (true) {
+			System.out.println("==================== View Product ====================");
+
+			System.out.print(
+					"\n1.View Account Info\n2.View Product\n3.View Cart \n4.checkout \n5.Purchased History\n6.Exit\nChoose: ");
+			 choose = sc.nextInt();
+			 if(choose > 0) {
+				 switch(choose) {
+				 	case 2:
+						pds.viewProduct(choose);
+						break;
+					case 6:
+						isExit = false;
+						break;
+					default:
+				 }
+			 }		
 		}
 	}
 	
