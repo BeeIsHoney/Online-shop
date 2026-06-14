@@ -8,7 +8,11 @@ public class ProductService {
 	ProductDb pddb = new ProductDb();
 	
 //	create,read, update , delete;
-	public void viewProduct(int id){
+	public void viewProductById(int id){
+
+		ProductDb.addProduct(new Product(1, "Laptop", 1200.0, "Gaming Laptop", 10, "Electronics", "Dell"));
+		ProductDb.addProduct(new Product(2, "Phone", 800.0, "Smart Phone", 20, "Electronics", "Samsung"));
+		
 		for(Product p : pddb.getProduct()) {
 			if (p.getId() == id) {
 	            System.out.println("Name: " + p.getName());
@@ -19,6 +23,6 @@ public class ProductService {
 	            System.out.println("Brand: " + p.getBrand());
 	        }
 		}
-		 System.out.println("Product not found.");
+		 System.out.println("Product not found.");		 
 	}
 }

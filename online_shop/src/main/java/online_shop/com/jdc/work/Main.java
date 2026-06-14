@@ -28,16 +28,16 @@ public class Main {
 			UserDb.addUser(testuser);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 
 		Main m = new Main();
 //		m.adminMenu();
 //		m.HomeMenu();
 //		lg.Register();
+		m.viewProduct();
 
 //		m.mainMenu();	
-		Product();
 	}
 
 	/*
@@ -102,6 +102,8 @@ public class Main {
 			case 1:
 				usersvc.viewUserById(id);
 				break;
+			case 2:
+				pds.viewProductById(id);
 			case 6:
 				isExit = false;
 				break;
@@ -161,37 +163,46 @@ public class Main {
 	 * ===========================================================
 	 */
 	public void viewProduct() {
-		boolean isExit = true;
-		int choose;
-		while (true) {
-			System.out.println("==================== View Product ====================");
+	    boolean isExit = true;
+	    int choose;
 
-			System.out.print(
-					"\n1.View Account Info\n2.View Product\n3.View Cart \n4.checkout \n5.Purchased History\n6.Exit\nChoose: ");
-			 choose = sc.nextInt();
-			 if(choose > 0) {
-				 switch(choose) {
-				 	case 2:
-						pds.viewProduct(choose);
-						break;
-					case 6:
-						isExit = false;
-						break;
-					default:
-				 }
-			 }		
-		}
+	    while (isExit) {
+
+	        System.out.println("\n==================== View Product ====================");
+	        System.out.println("1. View Product By ID");
+	        System.out.println("2. View All Products");
+	        System.out.println("3. Exit");
+	        System.out.print("Choose: ");
+
+	        choose = sc.nextInt();
+
+	        switch (choose) {
+
+	        case 1:
+	            System.out.print("Enter Product ID: ");
+	            int id = sc.nextInt();
+	            pds.viewProductById(id);
+	            break;
+
+	        case 2:
+	            System.out.println("\n========== Product List ==========");
+	            for (Product product : ProductDb.getProduct()) {
+	                System.out.println(
+	                        product.getId() + " | "
+	                        + product.getName() + " | "
+	                        + product.getPrice() + " | "
+	                        + product.getQuantity());
+	            }
+	            break;
+
+	        case 3:
+	            isExit = false;
+	            System.out.println("Exiting...");
+	            break;
+
+	        default:
+	            System.out.println("Invalid choice!");
+	        }
+	    }
 	}
-	
-	static void Product() {
-		
-		ProductDb.addProduct(new Product(1, "Laptop", 1200.0, "Gaming Laptop", 10,
-	                        "Electronics", "Dell"));
-		ProductDb.addProduct(new Product(2, "Phone", 800.0, "Smart Phone", 20,
-	                        "Electronics", "Samsung"));
-		ProductService service = new ProductService();
-
-	    service.viewProduct(1);
-	}
-
 }
