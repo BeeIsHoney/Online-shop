@@ -27,6 +27,12 @@ public class Main {
 			UserDb.addUser(admin);
 			UserDb.addUser(testuser);
 		}
+		
+		if(ProductDb.getProduct().size() == 0) {
+			ProductDb.addProduct(new Product(1, "Laptop", 1200.0, "Gaming Laptop", 10, "Electronics", "Dell"));
+			ProductDb.addProduct(new Product(2, "Phone", 800.0, "Smart Phone", 20, "Electronics", "Samsung"));
+
+		}
 	}
 
 	public static void main(String[] args) {
@@ -35,9 +41,9 @@ public class Main {
 //		m.adminMenu();
 //		m.HomeMenu();
 //		lg.Register();
-		m.viewProduct();
+//		m.viewProduct();
 
-//		m.mainMenu();	
+		m.mainMenu();	
 	}
 
 	/*
@@ -103,7 +109,7 @@ public class Main {
 				usersvc.viewUserById(id);
 				break;
 			case 2:
-				pds.viewProductById(id);
+				pds.ViewallProduct();
 			case 6:
 				isExit = false;
 				break;
